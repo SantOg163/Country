@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "Name": "Russia",
+    "Area": 17100000,
+    "Population": 144100000,
+    "Image": "russia.png"
+  },
+  {
+    "Id": 2,
+    "Name": "Japan",
+    "Area": 377975,
+    "Population": 125800000,
+    "Image": "japanese.png"
+  },
+  {
+    "Id": 3,
+    "Name": "USA",
+    "Area": 9834000,
+    "Population": 329500000,
+    "Image": "usa.png"
+  },
+  {
+    "Id": 4,
+    "Name": "China",
+    "Area": 9597000,
+    "Population": 1402000000,
+    "Image": "china.png"
+  },
+  {
+    "Id": 5,
+    "Name": "Korean",
+    "Area": 100210,
+    "Population": 51780000,
+    "Image": "korean.png"
+  },
+  {
+    "Id": 6,
+    "Name": "India",
+    "Area": 3287000,
+    "Population": 1380000000,
+    "Image": "india.png"
+  },
+  {
+    "Id": 7,
+    "Name": "Africa",
+    "Area": 30370000,
+    "Population": 1410638551,
+    "Image": "africa.png"
+  },
+  {
+    "Id": 8,
+    "Name": "Italy",
+    "Area": 301230,
+    "Population": 59550000,
+    "Image": "italy.png"
+  },
+  {
+    "Id": 9,
+    "Name": "Spain",
+    "Area": 505990,
+    "Population": 47350000,
+    "Image": "spain.png"
+  },
+{
+"Id": 10,
+"Name": "Egypt",
+"Area": 100200,
+"Population": 102300000,
+"Image": "egypt.png"
+}
+]
