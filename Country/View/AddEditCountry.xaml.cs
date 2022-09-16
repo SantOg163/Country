@@ -2,6 +2,7 @@ using Country.ViewModel;
 using System.Text;
 using System.Windows;
 using Microsoft.Win32;
+using System.Text.Json;
 
 namespace Country.View;
 
@@ -38,19 +39,14 @@ public partial class AddEditCountry : ContentPage
 		}
 
         _newCountry.Id = await countryViewModel.GetCountryAsync()+1;
-
+        
         Directory.SetCurrentDirectory(System.AppDomain.CurrentDomain.BaseDirectory);
         var dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\AppX", "\\Resources\\Raw\\Countries.json");
-        string content;
-        using (StreamReader sr = new StreamReader(dir))
-        {
-            // из-за фигурных скобок в файле json (нельзя $ поставить)
-            string newCountry = "},\r\n  {\r\n    \"Id\": " + _newCountry.Id + ",\r\n    \"Name\": \"" + _newCountry.Name + "\",\r\n    \"Area\": " + _newCountry.Area + ",\r\n    \"Population\": " + _newCountry.Population + ",\r\n    \"Image\": \""+_newCountry.Name.ToLower()+".png\"\r\n  }\r\n]";
-            content = sr.ReadToEnd().Replace("}\r\n]",newCountry);
-        }
-        //сохраняется после закрытия программы
-        File.WriteAllText(dir, content);
-        Navigation.PushAsync(new MainPage());
+        countryViewModel.Countries.Add(_newCountry);
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        string jsonStr = JsonSerializer.Serialize(countryViewModel.Countries, options);
+        File.WriteAllText(dir, jsonStr);
+        await Navigation.PopAsync();
 
     }
 
