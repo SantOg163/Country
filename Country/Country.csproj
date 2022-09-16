@@ -62,4 +62,10 @@
 	  <None Remove="Resources\Raw\Countries.json" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="View\AddEditCountry.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

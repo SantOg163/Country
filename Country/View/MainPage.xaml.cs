@@ -1,15 +1,22 @@
-﻿using Country.ViewModel;
+﻿using Country.View;
+using Country.ViewModel;
 
 namespace Country;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
 	public MainPage()
 	{
 		InitializeComponent();
 		BindingContext = new CountryViewModel();
+		
+	}
+
+	private void AddButton(object sender, EventArgs e)
+	{
+		NavigationPage.SetHasNavigationBar(this,false);
+		Navigation.PushAsync(new AddEditCountry());
 	}
 }
 

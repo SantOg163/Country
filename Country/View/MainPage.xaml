@@ -2,55 +2,64 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Country.MainPage">
-<StackLayout>
+    
         <Grid ColumnDefinitions="*,*">
-            <ScrollView Grid.Column="0">
-                <CollectionView ItemsSource="{Binding Countries}"
+            <CollectionView ItemsSource="{Binding Countries}"
                                 SelectedItem="{Binding SelectedItem}"
                                 SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid RowSpacing="10"
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="10"
                                   VerticalOptions="Center">
-                                <Frame BorderColor="BlueViolet"
+                            <Frame BorderColor="BlueViolet"
                                        CornerRadius="2"
                                        HasShadow="True"
                                        VerticalOptions="Center"
                                        Margin="10">
-                                    <StackLayout Spacing="10"
+                                <StackLayout Spacing="10"
                                                  Orientation="Horizontal"
                                                  Margin="0">
-                                        <Grid ColumnDefinitions="100,*,*"
+                                    <Grid ColumnDefinitions="100,*,*"
                                               ColumnSpacing="2">
-                                            <Frame CornerRadius="4"
+                                        <Frame CornerRadius="4"
                                                    HeightRequest="50"
                                                    WidthRequest="50"
                                                    Padding="0"
                                                    HorizontalOptions="Start">
-                                                <Image Source="{Binding Image}"
+                                            <Image Source="{Binding Image}"
                                                        Grid.Column="0"
                                                        HeightRequest="50"
                                                        WidthRequest="50"
                                                        />
-                                            </Frame>
-                                            <Label Text="{Binding Name}"
+                                        </Frame>
+                                        <Label Text="{Binding Name}"
                                                    FontSize="Medium" 
                                                    Grid.Column="1"
                                                    VerticalOptions="Center"/>
-                            
-                                        </Grid>
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
-            <ScrollView Grid.Column="1">
-                <Label Text="{Binding Desc}"
+
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        <ScrollView Grid.Column="1">
+            <Label Text="{Binding Desc}"
                        FontSize="Medium"
                        HorizontalTextAlignment="Center"/>
-            </ScrollView>
-        </Grid>
-    </StackLayout>
+        </ScrollView>
+        <Button Clicked="AddButton"
+                WidthRequest="50"
+                HeightRequest="50"
+                Text="+" 
+                Grid.Column="1"
+                BorderColor="BlueViolet"
+                BackgroundColor="Black"                
+                CornerRadius="100"
+                Margin="20"
+                VerticalOptions="End"
+                HorizontalOptions="End"/>
+
+    </Grid>
 </ContentPage>

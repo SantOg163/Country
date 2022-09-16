@@ -62,11 +62,11 @@
     "Population": 47350000,
     "Image": "spain.png"
   },
-{
-"Id": 10,
-"Name": "Egypt",
-"Area": 100200,
-"Population": 102300000,
-"Image": "egypt.png"
-}
+  {
+    "Id": 10,
+    "Name": "Egypt",
+    "Area": 100200,
+    "Population": 102300000,
+    "Image": "egypt.png"
+  }
 ]

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Country.View.AddEditCountry"
+             Title="AddEditCountry">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Label Text="Name" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+        <Entry x:Name="Name" Grid.Column="1" />
+        <!--<input
+  accept="image/*"
+  className={classes.input}
+  style={{ display: 'none' }}
+  id="raised-button-file"
+  multiple
+  type="file"
+/>
+        <Button Text="Uload a flag" x:Name="NewImage" Clicked="NewImage_Clicked"
+                WidthRequest="350"
+                HeightRequest="80"
+                BorderColor="BlueViolet"
+                BackgroundColor="Black"
+                CornerRadius="2"
+                Margin="20"
+                Grid.Column="1">
+            
+        </Button>-->
+        <Label Text="Area" Grid.Row="1" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+        <Entry x:Name="Area" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Start"/>
+        <Label Text="Population" Grid.Row="2" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+        <Entry x:Name="Population" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start"/>
+        <Button Clicked="AddCountry"
+                WidthRequest="50"
+                HeightRequest="50"
+                Text="+" 
+                BorderColor="BlueViolet"
+                BackgroundColor="Black"                
+                CornerRadius="100"
+                Margin="20"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Grid.Column="1"
+                Grid.Row="3"/>
+    </Grid>
+</ContentPage>

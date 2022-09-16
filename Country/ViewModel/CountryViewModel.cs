@@ -43,7 +43,7 @@ namespace Country.ViewModel
         }
         }
         // Метод получения коллекции объектов
-        async Task GetCountryAsync()
+        public async Task<int> GetCountryAsync()
 {
             try
             {
@@ -59,6 +59,7 @@ namespace Country.ViewModel
             {
                 await Shell.Current.DisplayAlert("Ошибка!", $"Что - то пошло не так: { ex.Message}","OK");
             }
+            return Countries.Count();
         }
     }
 }
