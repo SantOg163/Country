@@ -68,40 +68,5 @@
     "Population": 102300000,
     "Area": 100200,
     "Image": "egypt.png"
-  },
-  {
-    "Id": 11,
-    "Name": "fsdaaaaaawef",
-    "Population": 14,
-    "Area": 13,
-    "Image": null
-  },
-  {
-    "Id": 12,
-    "Name": "fsdaaaaaawef",
-    "Population": 14,
-    "Area": 13,
-    "Image": null
-  },
-  {
-    "Id": 13,
-    "Name": "sfssfffef",
-    "Population": 234,
-    "Area": 24,
-    "Image": null
-  },
-  {
-    "Id": 14,
-    "Name": "sffwe",
-    "Population": 23,
-    "Area": 33332,
-    "Image": null
-  },
-  {
-    "Id": 15,
-    "Name": "ffae",
-    "Population": 322,
-    "Area": 123,
-    "Image": null
   }
 ]

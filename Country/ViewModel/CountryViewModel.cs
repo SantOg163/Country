@@ -6,10 +6,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Country.ViewModel
 {
-    internal class CountryViewModel : BindableObject
+    public class CountryViewModel : BindableObject
     {
         // Переменная для хранения состояния
         // выбранного элемента коллекции
@@ -25,22 +26,24 @@ namespace Country.ViewModel
     {
         GetCountryAsync();
     }
-    // Публичное свойство для представления
-    // описания выбранного элемента из коллекции
-    public string Desc { get; set; }
-    // Свойство для представления и изменения
-    // состояния выбранного объекта
-    public Model.Country SelectedItem
+        // Публичное свойство для представления
+        // описания выбранного элемента из коллекции
+        public string Desc { get; set; }
+        public bool CurrentColor { get; set; }
+        // Свойство для представления и изменения
+        // состояния выбранного объекта
+        public Model.Country SelectedItem
     {
         get => _selectedItem;
-        set
-        {
-            _selectedItem = value;
-            Desc = $"Area: {value?.Area} \nPopulation: {value?.Population}";
-            // Метод отвечает за обновление данных
-            // в реальном времени
-            OnPropertyChanged(nameof(Desc));
-        }
+            set
+            {
+                _selectedItem = value;
+                Desc = $"Area: {value?.Area} \nPopulation: {value?.Population}";
+                // Метод отвечает за обновление данных
+                // в реальном времени
+                OnPropertyChanged(nameof(Desc));
+                OnPropertyChanged(nameof(CurrentColor));
+            }
         }
         // Метод получения коллекции объектов
         public async Task<int> GetCountryAsync()

@@ -8,28 +8,31 @@ namespace Country.View;
 
 public partial class AddEditCountry : ContentPage
 {
-	public Model.Country _newCountry = new Model.Country();
-	public AddEditCountry()
+	public Model.Country _currentCountry = new Model.Country();
+	public AddEditCountry(Model.Country selectedCountry)
 	{
 		InitializeComponent();
-        BindingContext = _newCountry;
+        if (selectedCountry != null)
+            _currentCountry = selectedCountry;
+        BindingContext = _currentCountry;
     }
 
 	private async void AddCountry(object sender, EventArgs e)
     { 
-        _newCountry.Area = Convert.ToInt32(Area.Text);
-        _newCountry.Population = Convert.ToInt32(Population.Text);
-        _newCountry.Name = Name.Text;
+        _currentCountry.Area = Convert.ToInt32(Area.Text);
+        _currentCountry.Population = Convert.ToInt32(Population.Text);
+        _currentCountry.Name = Name.Text;
+        _currentCountry.Image = "noimg.png";
 		CountryViewModel countryViewModel = new CountryViewModel();
         StringBuilder errors = new StringBuilder();
 
-        if (!int.TryParse(_newCountry.Area.ToString(), out int num))
+        if (!int.TryParse(_currentCountry.Area.ToString(), out int num))
             errors.AppendLine("error: The area must be a number");
-        if (!int.TryParse(_newCountry.Population.ToString(), out int num2))
+        if (!int.TryParse(_currentCountry.Population.ToString(), out int num2))
             errors.AppendLine("error: The population must be a number");
-		if(_newCountry.Name.Any(char.IsDigit))
+		if(_currentCountry.Name.Any(char.IsDigit))
             errors.AppendLine("error: The name cannot contain numbers");
-        if (countryViewModel.Countries.Where(c => c.Name == _newCountry.Name).Count() != 0)
+        if (countryViewModel.Countries.Where(c => c.Name == _currentCountry.Name).Count() != 0)
 			errors.AppendLine("error: Such a country already exists");
 
 		if (errors.Length > 0)
@@ -38,16 +41,16 @@ public partial class AddEditCountry : ContentPage
 			return;
 		}
 
-        _newCountry.Id = await countryViewModel.GetCountryAsync()+1;
+        _currentCountry.Id = await countryViewModel.GetCountryAsync()+1;
         
         Directory.SetCurrentDirectory(System.AppDomain.CurrentDomain.BaseDirectory);
         var dir = Directory.GetCurrentDirectory().Replace("\\bin\\Debug\\net6.0-windows10.0.19041.0\\win10-x64\\AppX", "\\Resources\\Raw\\Countries.json");
-        countryViewModel.Countries.Add(_newCountry);
+        countryViewModel.Countries.Add(_currentCountry);
         var options = new JsonSerializerOptions { WriteIndented = true };
         string jsonStr = JsonSerializer.Serialize(countryViewModel.Countries, options);
         File.WriteAllText(dir, jsonStr);
         await Navigation.PopAsync();
-
+        MainPage.context.Countries.Add(_currentCountry);
     }
 
     private async void NewImage_Clicked(object sender, EventArgs e,PickOptions options)

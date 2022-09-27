@@ -1,49 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Country.Converters"
              x:Class="Country.MainPage">
-    
-        <Grid ColumnDefinitions="*,*">
-            <CollectionView ItemsSource="{Binding Countries}"
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToColorConverter x:Key="BoolToColor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="*,*">
+        <CollectionView x:Name="Countries" ItemsSource="{Binding Countries}"
                                 SelectedItem="{Binding SelectedItem}"
                                 SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid RowSpacing="10"
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowSpacing="10"
                                   VerticalOptions="Center">
-                            <Frame BorderColor="BlueViolet"
+                        <Frame BorderColor="BlueViolet" BackgroundColor="{Binding CurrentColor, Converter={StaticResource BoolToColor}}"
                                        CornerRadius="2"
                                        HasShadow="True"
                                        VerticalOptions="Center"
                                        Margin="10">
-                                <StackLayout Spacing="10"
+                            <StackLayout Spacing="10"
                                                  Orientation="Horizontal"
                                                  Margin="0">
-                                    <Grid ColumnDefinitions="100,*,*"
+                                <Grid ColumnDefinitions="100,*,*"
                                               ColumnSpacing="2">
-                                        <Frame CornerRadius="4"
+                                    <Frame CornerRadius="4"
                                                    HeightRequest="50"
                                                    WidthRequest="50"
                                                    Padding="0"
                                                    HorizontalOptions="Start">
-                                            <Image Source="{Binding Image}"
+                                        <Image Source="{Binding Image}"
                                                        Grid.Column="0"
                                                        HeightRequest="50"
                                                        WidthRequest="50"
                                                        />
-                                        </Frame>
-                                        <Label Text="{Binding Name}"
+                                    </Frame>
+                                    <Label Text="{Binding Name}"
                                                    FontSize="Medium" 
                                                    Grid.Column="1"
                                                    VerticalOptions="Center"/>
 
-                                    </Grid>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <ScrollView Grid.Column="1">
             <Label Text="{Binding Desc}"
                        FontSize="Medium"
@@ -60,6 +67,15 @@
                 Margin="20"
                 VerticalOptions="End"
                 HorizontalOptions="End"/>
-
+        <Button Clicked="DeleteButton"
+                WidthRequest="100"
+                HeightRequest="50"
+                Text="Delete" 
+                Grid.Column="1"
+                BorderColor="BlueViolet"
+                BackgroundColor="Black"
+                Margin="0,0,100,20"
+                VerticalOptions="End"
+                HorizontalOptions="End"/>
     </Grid>
 </ContentPage>

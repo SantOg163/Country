@@ -56,6 +56,7 @@
 	  <None Remove="Resources\Images\italy.png" />
 	  <None Remove="Resources\Images\japanese.png" />
 	  <None Remove="Resources\Images\korean.png" />
+	  <None Remove="Resources\Images\NoImg.png" />
 	  <None Remove="Resources\Images\russia.png" />
 	  <None Remove="Resources\Images\spain.png" />
 	  <None Remove="Resources\Images\usa.png" />
